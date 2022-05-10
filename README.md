@@ -2,14 +2,17 @@
 
 Utility browser sources for OBS Studio.
 
-## Pomodoro
+## pomodoro.html
 
 Universal pomodoro timer with auto scene switcher.
 
-### Usage
+### Basic usage
 
-Add a browser source with **ADVANCED** permission ("OBSへの高度なアクセス" in Japanese).
+Add a browser source with the following URL:
 
 - https://r7kamura.github.io/obs-browser-sources/pomodoro.html
 
-If there are scenes named `Work` and `Break`, this browser source will automatically switch between the scenes according to the timer.
+### Advanced usage
+
+If you set **ADVANCED** permission ("OBSへの高度なアクセス" in Japanese) and there are scenes named `Work` and `Break`,
+this browser source will automatically switch between the scenes according to the timer.
