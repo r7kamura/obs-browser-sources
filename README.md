@@ -6,9 +6,12 @@ Utility browser sources for OBS Studio.
 
 Universal 50/10 pomodoro timer with auto scene switcher.
 
-Every hour, it shows remained work time from 00 to 50 minutes, then shows remained break time from 50 to 00 minutes.
-
 ![](images/pomodoro.png)
+
+This timer is linked to the current time:
+
+- Between 00 and 50 minutes, the remaining work time is displayed
+- Between 50 and 00 minutes, the remaining rest time is displayed
 
 ### Basic usage
 
