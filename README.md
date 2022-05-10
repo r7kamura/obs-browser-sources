@@ -11,7 +11,7 @@ Universal 50/10 pomodoro timer with auto scene switcher.
 This timer is linked to the current time:
 
 - Between 00 and 50 minutes, the remaining work time is displayed
-- Between 50 and 00 minutes, the remaining rest time is displayed
+- Between 50 and 00 minutes, the remaining break time is displayed
 
 ### Basic usage
 
