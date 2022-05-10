@@ -2,7 +2,7 @@
 
 Utility browser sources for OBS Studio.
 
-## pomodoro.html
+## pomodoro-50-10.html
 
 Universal 50/10 pomodoro timer with auto scene switcher.
 
@@ -17,7 +17,7 @@ This timer is linked to the current time:
 
 Add a browser source with the following URL:
 
-- https://r7kamura.github.io/obs-browser-sources/pomodoro.html
+- https://r7kamura.github.io/obs-browser-sources/pomodoro-50-10.html
 
 ### Advanced usage
 
