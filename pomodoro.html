@@ -38,14 +38,12 @@
         const date = new Date();
         const minutes = date.getMinutes();
         const seconds = date.getSeconds();
-        if (seconds !== 0) {
-          return;
-        }
-
-        if (minutes === 0 && seconds === 0) {
-          switchToWorkScene();
-        } else if (minutes === 50 && seconds === 0) {
-          switchToBreakScene();
+        if (seconds === 0) {
+          if (minutes === 0) {
+            switchToWorkScene();
+          } else if (minutes === 50) {
+            switchToBreakScene();
+          }
         }
       }
 
