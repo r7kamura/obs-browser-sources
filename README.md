@@ -6,6 +6,8 @@ Utility browser sources for OBS Studio.
 
 Universal pomodoro timer with auto scene switcher.
 
+![](images/pomodoro.png)
+
 ### Basic usage
 
 Add a browser source with the following URL:
