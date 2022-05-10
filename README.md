@@ -4,7 +4,9 @@ Utility browser sources for OBS Studio.
 
 ## pomodoro.html
 
-Universal pomodoro timer with auto scene switcher.
+Universal 50/10 pomodoro timer with auto scene switcher.
+
+Every hour, it shows remained work time from 00 to 50 minutes, then shows remained break time from 50 to 00 minutes.
 
 ![](images/pomodoro.png)
 
