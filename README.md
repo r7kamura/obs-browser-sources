@@ -23,3 +23,5 @@ Add a browser source with the following URL:
 
 If you set **ADVANCED** permission ("OBSへの高度なアクセス" in Japanese) and there are scenes named `Work` and `Break`,
 this browser source will automatically switch between the scenes according to the timer.
+
+![](images/obs.png)
