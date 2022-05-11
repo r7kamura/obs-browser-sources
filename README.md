@@ -8,11 +8,6 @@ Clockwork pomodoro timer with auto scene switcher.
 
 ![](images/pomodoro.png)
 
-This timer is linked to the current time:
-
-- Between 00 and 50 minutes, the remaining work time is displayed
-- Between 50 and 00 minutes, the remaining break time is displayed
-
 ### Usage
 
 Add a browser source with the following URL:
@@ -21,7 +16,10 @@ Add a browser source with the following URL:
 
 ### Change time interval
 
-The default time interval is for 50 min work + 10 min break.
+The default time interval is for 50 min work + 10 min break, linked to the current time:
+
+- Between 00 and 50 minutes, the remaining work time is displayed
+- Between 50 and 00 minutes, the remaining break time is displayed
 
 If you would like to change time interval, add `work` and `break` URL query parameters.
 
