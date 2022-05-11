@@ -8,13 +8,13 @@
         background-color: rgba(0, 0, 0, 0);
         color: #fff;
         display: flex;
-        font-family: Arial, sans-serif;
-        font-size: 36vw;
+        font-family: "Monaco", "Consolas", monospace;
+        font-size: 32vw;
         font-weight: bold;
         justify-content: center;
         margin: 0px auto;
         overflow: hidden;
-        -webkit-text-stroke: 3px #000;
+        -webkit-text-stroke: 0.4vw #000;
       }
     </style>
   </head>
@@ -48,6 +48,11 @@
         const seconds = date.getSeconds();
         const interval = parameters.work + parameters.break;
         const minutesInInterval = minutes % interval;
+
+        if (minutesInInterval < parameters.work) {
+
+        }
+
         if (seconds === 0) {
           if (minutesInInterval === 0) {
             switchToWorkScene();
