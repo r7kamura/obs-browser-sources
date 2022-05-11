@@ -16,6 +16,14 @@
         overflow: hidden;
         -webkit-text-stroke: 0.4vw #000;
       }
+
+      .break {
+        color: #FFB6C1;
+      }
+
+      .work {
+        color: #98FB98;
+      }
     </style>
   </head>
   <body>
@@ -23,6 +31,14 @@
     <script type="text/javascript">
       function zeroPadding(number, length) {
         return (Array(length).join("0") + number).slice(-length);
+      }
+
+      function calculateClassName(parameters) {
+        const date = new Date();
+        const minutes = date.getMinutes();
+        const interval = parameters.work + parameters.break;
+        const minutesInInterval = minutes % interval;
+        return minutesInInterval < parameters.work ? "work" : "break";
       }
 
       function calculateTimerText(parameters) {
@@ -48,11 +64,6 @@
         const seconds = date.getSeconds();
         const interval = parameters.work + parameters.break;
         const minutesInInterval = minutes % interval;
-
-        if (minutesInInterval < parameters.work) {
-
-        }
-
         if (seconds === 0) {
           if (minutesInInterval === 0) {
             switchToWorkScene();
@@ -86,8 +97,9 @@
 
       setInterval(function () {
         const parameters = getParameters();
-        document.getElementById("timer").textContent =
-          calculateTimerText(parameters);
+        const element = document.getElementById("timer")
+        element.textContent = calculateTimerText(parameters);
+        element.className = calculateClassName(parameters);
         switchScene(parameters);
       }, 1000);
     </script>
