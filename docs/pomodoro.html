@@ -30,7 +30,7 @@
     <div id="timer"></div>
     <script type="text/javascript">
       function zeroPadding(number, length) {
-        return (Array(length).join("0") + number).slice(-length);
+        return number.toString().padStart(length, "0");
       }
 
       function calculateClassName(parameters) {
