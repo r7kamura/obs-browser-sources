@@ -2,9 +2,9 @@
 
 Utility browser sources for OBS Studio.
 
-## pomodoro-50-10.html
+## pomodoro.html
 
-Universal 50/10 pomodoro timer with auto scene switcher.
+Clockwork pomodoro timer with auto scene switcher.
 
 ![](images/pomodoro.png)
 
@@ -17,7 +17,17 @@ This timer is linked to the current time:
 
 Add a browser source with the following URL:
 
-- https://r7kamura.github.io/obs-browser-sources/pomodoro-50-10.html
+- https://r7kamura.github.io/obs-browser-sources/pomodoro.html
+
+The default time interval is for 50 min work + 10 min break.
+If you would like to change time interval, add `work` and `break` URL query parameters.
+
+For example:
+
+- https://r7kamura.github.io/obs-browser-sources/pomodoro.html?work=25&break=5
+    - 25 min work + 5 min break
+- https://r7kamura.github.io/obs-browser-sources/pomodoro.html?work=20&break=10
+    - 20 min work + 10 min break
 
 ### Advanced usage
 

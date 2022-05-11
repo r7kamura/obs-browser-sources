@@ -22,26 +22,30 @@
         return (Array(length).join("0") + number).slice(-length);
       }
 
-      function calculateTimerText() {
+      function calculateTimerText(parameters) {
         const date = new Date();
         const minutes = date.getMinutes();
         const seconds = date.getSeconds();
         const remainingSeconds = 59 - seconds;
-        const remainingMinutes = (minutes < 50 ? 49 : 59) - minutes;
+        const interval = parameters.work + parameters.break;
+        const minutesInInterval = minutes % interval;
+        const remainingMinutes = (minutes < parameters.work ? parameters.work : interval) - minutesInInterval - 1;
         return [
           zeroPadding(remainingMinutes, 2),
           zeroPadding(remainingSeconds, 2),
         ].join(":");
       }
 
-      function switchScene() {
+      function switchScene(parameters) {
         const date = new Date();
         const minutes = date.getMinutes();
         const seconds = date.getSeconds();
+        const interval = parameters.work + parameters.break;
+        const minutesInInterval = minutes % interval;
         if (seconds === 0) {
-          if (minutes === 0) {
+          if (minutesInInterval === 0) {
             switchToWorkScene();
-          } else if (minutes === 50) {
+          } else if (minutesInInterval === parameters.work) {
             switchToBreakScene();
           }
         }
@@ -59,9 +63,20 @@
         }
       }
 
+      function getParameters() {
+        const params = new URL(window.location.href).searchParams;
+        const breakString = params.get("break") || "10";
+        const workString = params.get("work") || "50";
+        return {
+          break: parseInt(breakString, 10),
+          work: parseInt(workString, 10)
+        };
+      }
+
       setInterval(function () {
-        document.getElementById("timer").textContent = calculateTimerText();
-        switchScene();
+        const parameters = getParameters();
+        document.getElementById("timer").textContent = calculateTimerText(parameters);
+        switchScene(parameters);
       }, 1000);
     </script>
   </body>
