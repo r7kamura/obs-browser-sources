@@ -26,13 +26,13 @@ If you would like to change time interval, add `work` and `break` URL query para
 For example:
 
 - https://r7kamura.github.io/obs-browser-sources/pomodoro.html?work=25&break=5
-    - 25 min work + 5 min break
+  - 25 min work + 5 min break
 - https://r7kamura.github.io/obs-browser-sources/pomodoro.html?work=20&break=10
-    - 20 min work + 10 min break
+  - 20 min work + 10 min break
 
 ### Auto scene switcher
 
-If you set **ADVANCED** permission ("OBSへの高度なアクセス" in Japanese) and there are scenes named `Work` and `Break`,
+If you set **ADVANCED** permission ("OBS への高度なアクセス" in Japanese) and there are scenes named `Work` and `Break`,
 this browser source will automatically switch between the scenes according to the timer.
 
 ![](images/obs.png)
