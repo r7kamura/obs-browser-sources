@@ -20,6 +20,7 @@ Add a browser source with the following URL:
 - https://r7kamura.github.io/obs-browser-sources/pomodoro.html
 
 The default time interval is for 50 min work + 10 min break.
+
 If you would like to change time interval, add `work` and `break` URL query parameters.
 
 For example:
