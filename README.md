@@ -29,6 +29,8 @@ For example:
   - 25 min work + 5 min break
 - https://r7kamura.github.io/obs-browser-sources/pomodoro.html?work=20&break=10
   - 20 min work + 10 min break
+- https://r7kamura.github.io/obs-browser-sources/pomodoro.html?displayState=1
+  - with the name of state (work/break) displayed
 
 ### Auto scene switcher
 

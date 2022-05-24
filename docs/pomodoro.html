@@ -27,6 +27,7 @@
     </style>
   </head>
   <body>
+    <div id="state"></div>
     <div id="timer"></div>
     <script type="text/javascript">
       function zeroPadding(number, length) {
@@ -85,13 +86,23 @@
         }
       }
 
+      function displayState(parameters) {
+        if (parameters.displayState) {
+            document.getElementById("state").textContent = document.getElementById("timer").className;
+            document.body.style.fontSize = "16vw";
+            document.body.style.flexDirection = 'column';
+        }
+      }
+
       function getParameters() {
         const params = new URL(window.location.href).searchParams;
         const breakString = params.get("break") || "10";
         const workString = params.get("work") || "50";
+        const displayStateString = params.get("displayState") || "0";
         return {
           break: parseInt(breakString, 10),
           work: parseInt(workString, 10),
+          displayState: parseInt(displayStateString, 10)
         };
       }
 
@@ -101,6 +112,7 @@
         element.textContent = calculateTimerText(parameters);
         element.className = calculateClassName(parameters);
         switchScene(parameters);
+        displayState(parameters);
       }, 1000);
     </script>
   </body>
