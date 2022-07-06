@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>pomodoro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&display=swap" rel="stylesheet">
+    <style>
+      html {
+        font-size: 32vw;
+      }
+
+      body {
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0);
+        color: #fff;
+        display: flex;
+        font-family: 'Inconsolata', monospace;
+        justify-content: center;
+        margin: 0px auto;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      #timer {
+        letter-spacing: -1vw;
+        line-height: 0.7;
+      }
+
+      #session {
+        color: rgba(0, 0, 0, 0);
+        -webkit-text-stroke: 0.2vw #fff;
+        font-size: 0.4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id="timer"></div>
+      <div id="session"></div>
+    </div>
+    <script type="text/javascript">
+      function zeroPadding(number, length) {
+        return (Array(length).join("0") + number).slice(-length);
+      }
+
+      function calculateSessionText(parameters) {
+        const date = new Date();
+        const minutes = date.getMinutes();
+        const interval = parameters.work + parameters.break;
+        const minutesInInterval = minutes % interval;
+        const sessionNumber = (date.getHours() - 5) % 24;
+        if (minutesInInterval < parameters.work) {
+          return `POMODORO#${sessionNumber}`;
+        } else {
+          return `BREAK#${sessionNumber}`;
+        }
+      }
+
+      function calculateTimerClassName(parameters) {
+        const date = new Date();
+        const minutes = date.getMinutes();
+        const interval = parameters.work + parameters.break;
+        const minutesInInterval = minutes % interval;
+        return minutesInInterval < parameters.work ? "work" : "break";
+      }
+
+      function calculateTimerText(parameters) {
+        const date = new Date();
+        const minutes = date.getMinutes();
+        const seconds = date.getSeconds();
+        const remainingSeconds = 59 - seconds;
+        const interval = parameters.work + parameters.break;
+        const minutesInInterval = minutes % interval;
+        const remainingMinutes =
+          (minutes < parameters.work ? parameters.work : interval) -
+          minutesInInterval -
+          1;
+        return [
+          zeroPadding(remainingMinutes, 2),
+          zeroPadding(remainingSeconds, 2),
+        ].join(":");
+      }
+
+      function getParameters() {
+        return {
+          break: 10,
+          work: 50,
+        };
+      }
+
+      setInterval(function () {
+        const parameters = getParameters();
+        const timerElement = document.getElementById("timer")
+        timerElement.textContent = calculateTimerText(parameters);
+        timerElement.className = calculateTimerClassName(parameters);
+        const sessionElement = document.getElementById("session")
+        sessionElement.textContent = calculateSessionText(parameters);
+      }, 1000);
+    </script>
+  </body>
+</html>

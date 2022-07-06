@@ -38,3 +38,13 @@ If you set **ADVANCED** permission ("OBS への高度なアクセス" in Japanes
 this browser source will automatically switch between the scenes according to the timer.
 
 ![](images/obs.png)
+
+## pomodoro-timer.html
+
+Cool clockwork pomodoro timer.
+
+### Usage
+
+Add a browser source with the following URL:
+
+- https://r7kamura.github.io/obs-browser-sources/pomodoro-timer.html
