@@ -6,14 +6,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&family=Lalezar&display=swap" rel="stylesheet">
     <style>
+      :root {
+        --color-base: #FCF8E8;
+        --color-primary: #94B49F;
+        --color-accent: #DF7861;
+      }
+
       html {
         font-size: 32vw;
       }
 
       body {
         align-items: center;
-        background-color: rgba(0, 0, 0, 0.5);
-        color: #fff;
+        background-color: rgba(0, 0, 0, 0.1);
+        color: var(--color-base);
         display: flex;
         font-family: 'Inconsolata', monospace;
         justify-content: center;
@@ -23,26 +29,118 @@
       }
 
       #timer {
+        font-size: 0.9rem;
+        margin-top: 0.3rem;
         letter-spacing: -1vw;
         line-height: 0.7;
       }
 
       #label {
         color: rgba(0, 0, 0, 0);
-        -webkit-text-stroke: 0.3vw #fff;
+        -webkit-text-stroke: 0.4vw var(--color-base);
         font-family: 'Lalezar', monospace;
-        font-size: 0.35rem;
+        font-size: 0.3rem;
+      }
+
+      .base-timer {
+        height: 3rem;
+        position: relative;
+        width: 3rem;
+      }
+
+      .base-timer__circle {
+        fill: none;
+        stroke: none;
+      }
+
+      /* The SVG path that displays the timer's progress */
+      .base-timer__path-elapsed {
+        stroke-width: 0.01rem;
+      }
+
+      .base-timer__path-guide {
+        stroke-width: 0.003rem;
+        stroke: var(--color-accent);
+      }
+
+      .base-timer__path-work {
+        stroke-width: 0.003rem;
+        stroke: var(--color-primary);
+        transform: rotate(90deg);
+        transform-origin: center;
+      }
+
+      .base-timer__label {
+        align-items: center;
+        display: flex;
+        height: 3rem;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        width: 3rem;
+      }
+
+      .base-timer__path-remaining {
+        stroke-width: 0.01rem;
+        stroke-linecap: round;
+        transform: rotate(90deg);
+        transform-origin: center;
+        transition: 0.5s linear all;
+        stroke: var(--color-base);
+      }
+
+      .base-timer__svg {
+        /* Flips the svg and makes the animation to move left-to-right */
+        transform: scaleX(-1);
       }
     </style>
   </head>
   <body>
-    <div>
-      <div id="timer"></div>
-      <div id="label"></div>
+    <div class="base-timer">
+      <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <g class="base-timer__circle">
+          <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
+          <circle class="base-timer__path-guide" cx="50" cy="50" r="40" />
+          <path
+            id="base-timer-path-remaining"
+            stroke-dasharray="283"
+            class="base-timer__path-remaining"
+            d="
+              M 50, 50
+              m -45, 0
+              a 45,45 0 1,0 90,0
+              a 45,45 0 1,0 -90,0
+            "
+          ></path>
+          <path
+            stroke-dasharray="236"
+            class="base-timer__path-work"
+            d="
+              M 50 50
+              m -40 0
+              A 40 40 0 1 0 30 15.4
+            "
+          ></path>
+        </g>
+      </svg>
+      <div class="base-timer__label">
+        <div>
+          <div id="timer"></div>
+          <div id="label"></div>
+        </div>
+      </div>
     </div>
     <script type="text/javascript">
       function zeroPadding(number, length) {
         return (Array(length).join("0") + number).slice(-length);
+      }
+
+      function calculateRemainingPathDashArray(parameters) {
+        const date = new Date();
+        const minutes = date.getMinutes();
+        const interval = parameters.work + parameters.break;
+        const minutesInInterval = minutes % interval;
+        return `${283 * minutesInInterval / interval} 283`;
       }
 
       function calculateSessionText(parameters) {
@@ -92,11 +190,16 @@
 
       setInterval(function () {
         const parameters = getParameters();
+
         const timerElement = document.getElementById("timer")
         timerElement.textContent = calculateTimerText(parameters);
         timerElement.className = calculateTimerClassName(parameters);
+
         const sessionElement = document.getElementById("label")
         sessionElement.textContent = calculateSessionText(parameters);
+
+        const remainingPathElement = document.getElementById("base-timer-path-remaining");
+        remainingPathElement.setAttribute("stroke-dasharray", calculateRemainingPathDashArray(parameters));
       }, 1000);
     </script>
   </body>
