@@ -27,7 +27,7 @@
         line-height: 0.7;
       }
 
-      #session {
+      #label {
         color: rgba(0, 0, 0, 0);
         -webkit-text-stroke: 0.3vw #fff;
         font-family: 'Lalezar', monospace;
@@ -38,7 +38,7 @@
   <body>
     <div>
       <div id="timer"></div>
-      <div id="session"></div>
+      <div id="label"></div>
     </div>
     <script type="text/javascript">
       function zeroPadding(number, length) {
@@ -95,7 +95,7 @@
         const timerElement = document.getElementById("timer")
         timerElement.textContent = calculateTimerText(parameters);
         timerElement.className = calculateTimerClassName(parameters);
-        const sessionElement = document.getElementById("session")
+        const sessionElement = document.getElementById("label")
         sessionElement.textContent = calculateSessionText(parameters);
       }, 1000);
     </script>
