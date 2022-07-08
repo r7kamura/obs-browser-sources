@@ -48,16 +48,16 @@
         width: 3rem;
       }
 
-      .timer-path-group {
+      .timer-group {
         fill: none;
         stroke: none;
       }
 
-      .timer-path-inner-circle {
+      .timer-circle-red {
         stroke: var(--color-accent);
       }
 
-      .timer-path-inner-circle-2 {
+      .timer-circle-green {
         stroke: var(--color-primary);
 
         transform-origin: center;
@@ -73,11 +73,11 @@
         width: 3rem;
       }
 
-      .timer-path-background {
+      .timer-circle-background {
         fill: rgba(0, 0, 0, 0.7);
       }
 
-      .timer-path-outer-circle {
+      .timer-circle-outer {
         stroke: var(--color-base);
         stroke-linecap: round;
         stroke-width: 4;
@@ -93,11 +93,11 @@
   <body>
     <div class="timer">
       <svg class="timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <g class="timer-path-group">
-          <circle cx="50" cy="50" r="47" class="timer-path-background"/>
-          <circle cx="50" cy="50" r="45" class="timer-path-outer-circle" id="timer-path-outer-circle" stroke-dasharray="283"/>
-          <circle cx="50" cy="50" r="40" class="timer-path-inner-circle"/>
-          <circle cx="50" cy="50" r="40" class="timer-path-inner-circle-2" stroke-dasharray="209" />
+        <g class="timer-group">
+          <circle cx="50" cy="50" r="47" class="timer-circle-background"/>
+          <circle cx="50" cy="50" r="45" class="timer-circle-outer" id="timer-circle-outer" stroke-dasharray="283"/>
+          <circle cx="50" cy="50" r="40" class="timer-circle-red"/>
+          <circle cx="50" cy="50" r="40" class="timer-circle-green" stroke-dasharray="209" />
         </g>
       </svg>
       <div class="timer-label">
@@ -175,7 +175,7 @@
         const sessionElement = document.getElementById("timer-label-description")
         sessionElement.textContent = calculateSessionText(parameters);
 
-        const remainingPathElement = document.getElementById("timer-path-outer-circle");
+        const remainingPathElement = document.getElementById("timer-circle-outer");
         remainingPathElement.setAttribute("stroke-dasharray", calculateRemainingPathDashArray(parameters));
       }, 1000);
     </script>
