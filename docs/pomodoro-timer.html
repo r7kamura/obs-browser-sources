@@ -48,22 +48,22 @@
         width: 3rem;
       }
 
-      .timer__circle {
+      .timer-circle {
         fill: none;
         stroke: none;
       }
 
-      .timer__path-guide {
+      .timer-path-guide {
         stroke: var(--color-accent);
       }
 
-      .timer__path-work {
+      .timer-path-work {
         stroke: var(--color-primary);
         transform: rotate(90deg);
         transform-origin: center;
       }
 
-      .timer__label {
+      .timer-label {
         align-items: center;
         display: flex;
         height: 3rem;
@@ -73,7 +73,7 @@
         width: 3rem;
       }
 
-      .timer__path-remaining {
+      .timer-path-remaining {
         stroke: var(--color-base);
         stroke-linecap: round;
         stroke-width: 3;
@@ -82,7 +82,7 @@
         transition: 0.5s linear all;
       }
 
-      .timer__svg {
+      .timer-svg {
         /* Flips the svg and makes the animation to move left-to-right */
         transform: scaleX(-1);
       }
@@ -90,13 +90,13 @@
   </head>
   <body>
     <div class="timer">
-      <svg class="timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <g class="timer__circle">
-          <circle class="timer__path-guide" cx="50" cy="50" r="40" />
+      <svg class="timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <g class="timer-circle">
+          <circle class="timer-path-guide" cx="50" cy="50" r="40" />
           <path
             id="timer-path-remaining"
             stroke-dasharray="283"
-            class="timer__path-remaining"
+            class="timer-path-remaining"
             d="
               M 50, 50
               m -45, 0
@@ -106,7 +106,7 @@
           ></path>
           <path
             stroke-dasharray="236"
-            class="timer__path-work"
+            class="timer-path-work"
             d="
               M 50 50
               m -40 0
@@ -115,7 +115,7 @@
           ></path>
         </g>
       </svg>
-      <div class="timer__label">
+      <div class="timer-label">
         <div>
           <div id="timer"></div>
           <div id="label"></div>
