@@ -73,8 +73,11 @@
         width: 3rem;
       }
 
-      .timer-path-outer-circle {
+      .timer-path-background {
         fill: rgba(0, 0, 0, 0.7);
+      }
+
+      .timer-path-outer-circle {
         stroke: var(--color-base);
         stroke-linecap: round;
         stroke-width: 3;
@@ -93,6 +96,7 @@
     <div class="timer">
       <svg class="timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <g class="timer-path-group">
+          <circle class="timer-path-background" cx="50" cy="50" r="46.5" />
           <path
             id="timer-path-outer-circle"
             stroke-dasharray="283"
