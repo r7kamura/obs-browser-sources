@@ -42,33 +42,32 @@
         font-size: 0.25rem;
       }
 
-      .base-timer {
+      .timer {
         height: 3rem;
         position: relative;
         width: 3rem;
       }
 
-      .base-timer__circle {
+      .timer__circle {
         fill: none;
         stroke: none;
       }
 
-      /* The SVG path that displays the timer's progress */
-      .base-timer__path-elapsed {
+      .timer__path-elapsed {
         stroke-width: 0.01rem;
       }
 
-      .base-timer__path-guide {
+      .timer__path-guide {
         stroke: var(--color-accent);
       }
 
-      .base-timer__path-work {
+      .timer__path-work {
         stroke: var(--color-primary);
         transform: rotate(90deg);
         transform-origin: center;
       }
 
-      .base-timer__label {
+      .timer__label {
         align-items: center;
         display: flex;
         height: 3rem;
@@ -78,7 +77,7 @@
         width: 3rem;
       }
 
-      .base-timer__path-remaining {
+      .timer__path-remaining {
         stroke: var(--color-base);
         stroke-linecap: round;
         stroke-width: 3;
@@ -87,22 +86,22 @@
         transition: 0.5s linear all;
       }
 
-      .base-timer__svg {
+      .timer__svg {
         /* Flips the svg and makes the animation to move left-to-right */
         transform: scaleX(-1);
       }
     </style>
   </head>
   <body>
-    <div class="base-timer">
-      <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <g class="base-timer__circle">
-          <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
-          <circle class="base-timer__path-guide" cx="50" cy="50" r="40" />
+    <div class="timer">
+      <svg class="timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <g class="timer__circle">
+          <circle class="timer__path-elapsed" cx="50" cy="50" r="45" />
+          <circle class="timer__path-guide" cx="50" cy="50" r="40" />
           <path
-            id="base-timer-path-remaining"
+            id="timer-path-remaining"
             stroke-dasharray="283"
-            class="base-timer__path-remaining"
+            class="timer__path-remaining"
             d="
               M 50, 50
               m -45, 0
@@ -112,7 +111,7 @@
           ></path>
           <path
             stroke-dasharray="236"
-            class="base-timer__path-work"
+            class="timer__path-work"
             d="
               M 50 50
               m -40 0
@@ -121,7 +120,7 @@
           ></path>
         </g>
       </svg>
-      <div class="base-timer__label">
+      <div class="timer__label">
         <div>
           <div id="timer"></div>
           <div id="label"></div>
@@ -196,7 +195,7 @@
         const sessionElement = document.getElementById("label")
         sessionElement.textContent = calculateSessionText(parameters);
 
-        const remainingPathElement = document.getElementById("base-timer-path-remaining");
+        const remainingPathElement = document.getElementById("timer-path-remaining");
         remainingPathElement.setAttribute("stroke-dasharray", calculateRemainingPathDashArray(parameters));
       }, 1000);
     </script>
