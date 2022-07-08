@@ -6,7 +6,7 @@ Utility browser sources for OBS Studio.
 
 Clockwork pomodoro timer with auto scene switcher.
 
-![](images/timer.png)
+![](images/pomodoro.png)
 
 ### Usage
 
